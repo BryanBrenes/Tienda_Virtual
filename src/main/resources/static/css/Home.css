@@ -26,7 +26,7 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Other/CascadeStyleSheet.css to ed
 }
 
 .navbar{
-   height: 15 vh;
+   height: 15vh;
    width: 100%; 
    margin: auto;
    display: flex;
@@ -43,7 +43,7 @@ nav{
 nav ul li{
     display: inline-block;
     list-style: none;
-    margin: 0px 20px;
+    margin: 0px 40px;
     
 }
 
