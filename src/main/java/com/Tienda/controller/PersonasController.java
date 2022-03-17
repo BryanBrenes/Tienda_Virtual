@@ -4,7 +4,9 @@
  */
 package com.Tienda.controller;
 
+import com.Tienda.entity.Pais;
 import com.Tienda.entity.Persona;
+import com.Tienda.service.IPaisService;
 import com.Tienda.service.IPersonaService;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -17,8 +19,12 @@ import org.springframework.web.bind.annotation.PostMapping;
 
 @Controller
 public class PersonasController {
+    
     @Autowired
     private IPersonaService personaService;
+    
+    @Autowired
+    private IPaisService paisService;
     
     @GetMapping("/personas")
     public String index(Model model){
@@ -30,6 +36,8 @@ public class PersonasController {
     
     @GetMapping("/personasN")
     public String crearPersona(Model model){
+        List<Pais> listaPais = paisService.listCountry();
+        model.addAttribute("paises", listaPais);
         model.addAttribute("persona", new Persona());
         return "crear";
     }
@@ -40,10 +48,19 @@ public class PersonasController {
         return "redirect:/personas";
     }
     
+        @GetMapping("/editPersona/{id}")
+    public String editarPersona(@PathVariable("id")Long idPersona, Model model){
+        Persona persona = personaService.getPersonById(idPersona);
+        List<Pais> listaPais = paisService.listCountry();
+        model.addAttribute("paises", listaPais);
+        model.addAttribute("persona", new Persona());
+        return "crear";
+    }
+    
     @GetMapping ("/delete/{id}")
     public String eliminarPersona(@PathVariable("id") Long idPersona){
         personaService.delete(idPersona);
-        return "/redirect:/personas";
+        return "redirect:/personas";
     }
     
     

@@ -30,6 +30,18 @@ public class Persona implements Serializable{
     @ManyToOne
     @JoinColumn(name = "paises_id")
     private Pais pais;
+    
+    public Persona() {
+    }
+
+    public Persona(Persona persona) {
+        this.id = persona.getId();
+        this.nombre = persona.getNombre();
+        this.apellido1 = persona.getApellido1();
+        this.apellido2 = persona.getApellido2();
+        this.telefono = persona.getTelefono();
+        this.email = persona.getEmail();
+    }
 
     public long getId() {
         return id;
@@ -88,7 +100,10 @@ public class Persona implements Serializable{
     }
     
     
-    
+    @Override
+    public String toString() {
+        return "Persona{" + "id=" + id + ", nombre=" + nombre + ", apellido1=" + apellido1 + ", apellido2=" + apellido2 + ", telefono=" + telefono + ", email=" + email + '}';
+    }
     
     
     
