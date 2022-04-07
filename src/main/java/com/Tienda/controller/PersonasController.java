@@ -53,7 +53,7 @@ public class PersonasController {
         Persona persona = personaService.getPersonById(idPersona);
         List<Pais> listaPais = paisService.listCountry();
         model.addAttribute("paises", listaPais);
-        model.addAttribute("persona", new Persona());
+        model.addAttribute("persona", persona);
         return "crear";
     }
     

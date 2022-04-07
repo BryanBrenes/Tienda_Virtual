@@ -32,16 +32,17 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Other/html.html to edit this temp
             <input type="text" th:field="*{email}" placeholder="Email" name="email"/>
             <br>
             <label for="pais">Pais:</label>
-            <select th:field="*{pais}"/>
+            <select th:field="*{pais}">
                 <option th:each="x:${paises}"
                         th:value="${x.id}"
                         th:text="${x.pais}"
                         />
+            </select>
             <br>
             <button type="submit" value="guardar"> Guardar </button>
             
         </form>
         
-        <<footer th:replace = "plantilla/template::footer"></footer>
+        <footer th:replace = "plantilla/template::footer"></footer>
     </body>
 </html>
