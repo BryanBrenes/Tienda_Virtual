@@ -52,7 +52,7 @@ public class PersonaService implements IPersonaService{
 
     @Override
     public Persona findByNombre(String nombre) {
-        return personaRepository.findbyNombre(nombre);
+        return personaRepository.findByNombre(nombre);
     }
     
 }

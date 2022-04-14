@@ -27,8 +27,8 @@ public class UserService implements UserDetailsService{
     public IPersonaService personaService;
     
     @Override
-    public UserDetails loadUserByUsername (String nombre) throws UsernameNotFoundException {
-        Persona persona = this.personaService.FindByNombre(username);
+    public UserDetails loadUserByUsername (String username) throws UsernameNotFoundException {
+        Persona persona = this.personaService.findByNombre(username);
         Userprincipal userPrincipal = new Userprincipal(persona);
         return userPrincipal;
     

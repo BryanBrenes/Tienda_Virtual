@@ -49,8 +49,17 @@
         </header>
         
         <footer th:fragment = "footer">
-            <p> Copyright Mi Tienda &copy; 2022</p>
+            <div>
+                <p> Copyright Mi Tienda &copy; 2022</p>
+                
+                
+                <a th:with="urlBuilder=${T(org.springframework.web.servlet.support.ServletUriComponentsBuilder).fromCurrentRequest()}"
+                   th:href="${urlBuilder.replaceQueryParam('lang','es')toUriString()}">ES<a>
+                <a th:with="urlBuilder=${T(org.springframework.web.servlet.support.ServletUriComponentsBuilder).fromCurrentRequest()}"
+                   th:href="${urlBuilder.replaceQueryParam('lang','en')toUriString()}">EN<a>
+                  
+            </div>
         </footer>
-        <div>TODO write content</div>
+        
     </body>
 </html>
