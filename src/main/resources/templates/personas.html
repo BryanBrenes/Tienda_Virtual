@@ -1,14 +1,22 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
-    <head>
-        <title>TODO supply a title</title>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    </head>
+    <head th:replace="plantilla/template::head"></head>
     <body>
         <h1 th:text="${titulo}"></h1>
         <h1 th:text="#{index.titulo}"></h1>
-        <table>
+        <table class="table">
+            <thead>
+                <tr>
+                    <th scope="col" th:text="#{columna.nombre}"></th>
+                    <th scope="col" th:text="#{columna.apellido1}"></th>
+                    <th scope="col" th:text="#{columna.apellido2}"></th>
+                    <th scope="col" th:text="#{columna.email}"></th>
+                    <th scope="col" th:text="#{columna.telefono}"></th>
+                    <th scope="col" th:text="#{columna.pais}"></th>
+                    <th scope="col">#</th>
+                    <th scope="col">#</th>
+                </tr>
+            </thead>
             <th:block th:each="user : ${personas}">
                 <tr>
                     <td th:text="${user.getNombre}"></td>
@@ -26,5 +34,7 @@
                 </tr>
             </th:block>
         </table>
+        
     </body>
+    <footer th:replace="plantilla/template::head"></footer>
 </html>
