@@ -30,10 +30,15 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     }
 
     @Bean
+    public UserService getUserService() {
+        return new UserService();
+    }
+
+    @Bean
     DaoAuthenticationProvider authenticationProvider() {
         DaoAuthenticationProvider daoAuthenticationProvider = new DaoAuthenticationProvider();
         daoAuthenticationProvider.setPasswordEncoder(passwordEncoder());
-        daoAuthenticationProvider.setUserDetailsService(this.userDetailsService);
+        daoAuthenticationProvider.setUserDetailsService(getUserService());
 
         return daoAuthenticationProvider;
     }
@@ -50,16 +55,26 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 //El siguiente método funciona para hacer la autenticación del usuario
     @Override
     protected void configure(HttpSecurity http) throws Exception {
-        http.authorizeRequests()
-                .antMatchers("/persona")
-                .hasRole("ADMIN")
-                .antMatchers("/personasN", "/persona")
-                .hasAnyRole("USER", "VENDEDOR", "ADMIN")
-                .antMatchers("/")
-                .hasAnyRole("USER", "VENDEDOR", "ADMIN")
-                .and()
-                .formLogin();
-                //.loginProcessingUrl("/signin").permitAll();
+        //http.authorizeRequests()
+        //      .antMatchers("/persona")
+        //    .hasRole("ADMIN")
+        //  .antMatchers("/personasN", "/persona")
+        // .hasAnyRole("USER", "VENDEDOR", "ADMIN")
+        // .antMatchers("/")
+        // .hasAnyRole("USER", "VENDEDOR", "ADMIN")
+        // .and()
+        // .formLogin();
+        //.loginProcessingUrl("/signin").permitAll();
+
+       // http.authorizeRequests()
+         //       .antMatchers("/personas", "/login")
+           //     .hasRole("ADMIN")
+             //   .antMatchers("/personasN", "/personas", "/", "/login")
+              //  .hasAnyRole("USER", "VENDEDOR", "ADMIN")
+               // .anyRequest().authenticated()
+               // .and()
+               // .formLogin()
+               // .loginPage("/login").permitAll().defaultSuccessUrl("/personas", true);
     }
 //El siguiente método funciona parsa realizar la autorización de accesos
 

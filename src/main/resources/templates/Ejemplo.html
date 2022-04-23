@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+
+
+<!--
+                    IMPORTANTE: Para acceder a la pagina de Ejemplo, favor digital localhost/Ejemplo
+                    Para cambiar el lenguaje entre ingles y espa;ol, utlice localhost/Ejemplo?lang=en o localhost/Ejemplo?lang=es
+-->
+
+<html xmlns:th="http://www.thymeleaf.org">
+    <head th:replace="plantilla/TemplateEjemplo::Cabeza">
+        </head>
+        <header th:replace="plantilla/TemplateEjemplo::Navegar"></header>
+    <body>
+        <div th:text="#{ejemplo.bienvenida}">
+        </div>
+        <div class="row">
+            <div class="col-md-4">
+                <div th:replace="plantilla/TemplateEjemplo::Carrusel"></div>
+                
+        </div>
+        </div>
+        <div th:replace="plantilla/TemplateEjemplo::Tarjeta"></div>
+    </body>
+</html>

@@ -7,12 +7,14 @@ package com.Tienda.controller;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 
+/**
+ *
+ * @author bryan
+ */
 @Controller
-public class LoginController {
-    
-    @GetMapping("/login")
+public class EjemploController {
+    @GetMapping({"/ejemplo","/Ejemplo"})
     public String index() {
-        return "/login";
+        return "Ejemplo";
     }
-    
 }
